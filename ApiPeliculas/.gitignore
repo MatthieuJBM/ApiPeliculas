@@ -1,0 +1,45 @@
+# Build artifacts
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.cache
+*.log
+
+# NuGet
+*.nupkg
+*.snupkg
+*.nuget.g.targets
+*.nuget.g.props
+
+# VS Code / Rider
+.idea/
+*.sln.iml
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# VS Code settings
+.vscode/
+
+# EF Core tools artifacts
+**/Migrations/*Designer.cs
+**/Migrations/*Snapshot.cs
+
+# Dotnet tool artifacts
+/.dotnet/
+/tools/
+
+# Others you might want
+*.db
+*.sqlite
+*.mdf
+
+**/Migrations/*.Designer.cs
+**/Migrations/*Snapshot.cs
+
+.dotnet/

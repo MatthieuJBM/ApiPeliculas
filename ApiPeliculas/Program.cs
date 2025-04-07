@@ -1,6 +1,13 @@
+using ApiPeliculas.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+// ConnectionString added
+var connectionString = builder.Configuration.GetConnectionString("ConexionSql");
+// DBContext added
+builder.Services.AddDbContext<ApplicationDbContext>(options => { options.UseMySQL(connectionString); });
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

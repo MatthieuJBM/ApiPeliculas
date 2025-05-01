@@ -11,5 +11,5 @@ public class ApplicationDbContext : DbContext
     }
     
     // Aquí pasar todas las entidades (modelos)
-    public DbSet<Categoria> Categorias { get; set; }
+    public DbSet<Categoria> Categoria { get; set; }
 }

@@ -117,7 +117,7 @@ public class CategoriasController : ControllerBase
 
         return NoContent();
     }
-    
+
     [HttpPut("{categoriaId:int}", Name = "ActualizarPutCategoria")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -137,17 +137,41 @@ public class CategoriasController : ControllerBase
         }
 
         var categoriaExistente = _ctRepo.GetCategoria(categoriaId);
-        
+
         if (categoriaExistente == null)
         {
             return NotFound($"No se encontró la categoría con ID ${categoriaId}");
         }
-        
+
         var categoria = _mapper.Map<Categoria>(categoriaDto);
 
         if (!_ctRepo.ActualizarCategoria(categoria))
         {
             ModelState.AddModelError("", $"Algo salió mal actualizando el registro {categoria.Nombre}");
+            return StatusCode(500, ModelState);
+        }
+
+        return NoContent();
+    }
+
+    [HttpDelete("{categoriaId:int}", Name = "BorrarCategoria")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public IActionResult BorrarCategoria(int categoriaId)
+    {
+        if (!_ctRepo.ExisteCategoria(categoriaId))
+        {
+            return NotFound();
+        }
+
+        var categoria = _ctRepo.GetCategoria(categoriaId);
+
+        if (!_ctRepo.BorrarCategoria(categoria))
+        {
+            ModelState.AddModelError("", $"Algo salió mal borrano el registro {categoria.Nombre}");
             return StatusCode(500, ModelState);
         }
 

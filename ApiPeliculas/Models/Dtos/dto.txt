@@ -1,0 +1,20 @@
+¿Qué es DTO?
+
+Objeto de transferencia de datos (DTO)
+
+Un DTO es un objeto que define cómo se enviarán los datos a través de la red.
+
+Ventajas de los DTO´s
+1. Oculte determinadas propiedades que los clientes no deben ver.
+2. Omita algunas propiedades con el fin de reducir el tamaño de la carga.
+3. Desacople la capa de servicio del nivel de base de datos.
+4. Control absoluto sobre los atributos que recibe cuando se cree un nuevo recurso o se actualice.
+5. Puede tener diferentes DTO´s para cada versión de la API.
+
+EJEMPLO
+
+MODELO                          CREAR DTO                       ACTUALIZAR DTO
+Id                                                              Id
+Nombre                          Nombre                          Nombre
+FechaCreacion
+FechaActualizacion

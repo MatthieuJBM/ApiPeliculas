@@ -32,6 +32,26 @@ public class CategoriasController : ControllerBase
         {
             listaCategoriasDto.Add(_mapper.Map<CategoriaDto>(item));
         }
+
         return Ok(listaCategoriasDto);
+    }
+
+    [HttpGet("{categoriaId:int}", Name = "GetCategoria")]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public IActionResult GetCategoria(int categoriaId)
+    {
+        var itemCategoria = _ctRepo.GetCategoria(categoriaId);
+
+        if (itemCategoria == null)
+        {
+            return NotFound();
+        }
+
+        // Cada vez tenemos que exponer el DTO y no el nuestro modelo.
+        var itemCategoriaDto = _mapper.Map<CategoriaDto>(itemCategoria);
+        return Ok(itemCategoriaDto);
     }
 }

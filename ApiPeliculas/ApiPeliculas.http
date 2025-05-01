@@ -1,6 +1,6 @@
-@ApiPeliculas_HostAddress = http://localhost:5037
+@ApiPeliculas_HostAddress = http://localhost:5001
 
-GET {{ApiPeliculas_HostAddress}}/weatherforecast/
+GET {{ApiPeliculas_HostAddress}}/api/categorias/
 Accept: application/json
 
 ###

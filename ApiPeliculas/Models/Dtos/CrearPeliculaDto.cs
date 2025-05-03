@@ -10,7 +10,7 @@ public class CrearPeliculaDto
 
     public string RutaImagen { get; set; }
 
-    public enum TipoClasificaion
+    public enum CrearTipoClasificaion
     {
         Siete,
         Trece,
@@ -18,7 +18,7 @@ public class CrearPeliculaDto
         Dieciocho
     }
 
-    public TipoClasificaion Clasificaion { get; set; }
+    public CrearTipoClasificaion Clasificaion { get; set; }
 
     // Relación con Categoría
     public int categoriaId { get; set; }

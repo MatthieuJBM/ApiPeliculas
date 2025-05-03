@@ -11,5 +11,7 @@ public class PeliculasMapper : Profile
         // ReverseMap hace que se comunica en ambas direcciones.
         CreateMap<Categoria, CategoriaDto>().ReverseMap();
         CreateMap<Categoria, CrearCategoriaDto>().ReverseMap();
+        CreateMap<Pelicula, PeliculaDto>().ReverseMap();
+        CreateMap<Pelicula, CrearPeliculaDto>().ReverseMap();
     }
 }
